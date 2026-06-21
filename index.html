@@ -1,464 +1,588 @@
 <!DOCTYPE HTML>
-
 <html>
 	<head>
 		<title>Shashwat Singh</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			/* Navigation in header banner */
+			#header nav {
+				margin-top: 1em;
+			}
+			#header nav ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.4em 1.2em;
+			}
+			#header nav ul li a {
+				color: rgba(255,255,255,0.6);
+				font-size: 0.8em;
+				text-decoration: none;
+				border-bottom: none;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				transition: color 0.2s;
+			}
+			#header nav ul li a:hover {
+				color: #fff;
+			}
+
+			/* Section spacing */
+			#main section {
+				margin-bottom: 3em;
+			}
+
+			/* News */
+			.news-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			.news-list li {
+				display: flex;
+				gap: 1.2em;
+				padding: 0.55em 0;
+				border-bottom: 1px solid #f0f0f0;
+				align-items: baseline;
+				font-size: 0.95em;
+			}
+			.news-list li:last-child {
+				border-bottom: none;
+			}
+			.news-date {
+				min-width: 5.5em;
+				color: #aaa;
+				font-size: 0.85em;
+				flex-shrink: 0;
+			}
+			.award-badge {
+				color: #b8860b;
+				font-weight: 600;
+			}
+
+			/* Publications */
+			.pub-year {
+				font-size: 1.1em;
+				font-weight: 700;
+				color: #444;
+				margin: 1.5em 0 0.8em;
+				padding-bottom: 0.3em;
+				border-bottom: 2px solid #eee;
+			}
+			.pub-entry {
+				display: flex;
+				gap: 1.2em;
+				margin-bottom: 1.6em;
+				align-items: flex-start;
+			}
+			.pub-thumb {
+				flex: 0 0 260px;
+				width: 260px;
+			}
+			.pub-thumb img {
+				width: 100%;
+				height: 160px;
+				object-fit: cover;
+				border-radius: 6px;
+				display: block;
+				border: 1px solid #e8e8e8;
+			}
+			.pub-thumb video {
+				width: 100%;
+				height: auto;
+				border-radius: 6px;
+				display: block;
+				border: 1px solid #e8e8e8;
+			}
+			.pub-thumb-placeholder {
+				width: 260px;
+				height: 160px;
+				background: #f4f4f4;
+				border: 1px dashed #ccc;
+				border-radius: 6px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: #bbb;
+				font-size: 2em;
+			}
+			.pub-content {
+				flex: 1;
+				border-left: 3px solid transparent;
+				padding-left: 0.8em;
+				transition: border-color 0.2s;
+			}
+			.pub-entry:hover .pub-content {
+				border-left-color: #49bf9d;
+			}
+			.pub-title {
+				font-weight: 600;
+				color: #333;
+				margin-bottom: 0.2em;
+				line-height: 1.4;
+			}
+			.pub-authors {
+				color: #666;
+				font-size: 0.88em;
+				margin-bottom: 0.15em;
+			}
+			.pub-authors strong {
+				color: #222;
+				font-weight: 700;
+			}
+			.pub-venue {
+				color: #888;
+				font-size: 0.85em;
+				font-style: italic;
+				margin-bottom: 0.4em;
+			}
+			.pub-links {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.4em;
+				margin-top: 0.4em;
+				align-items: center;
+			}
+			.pub-badge {
+				display: inline-block;
+				font-size: 0.78em;
+				font-weight: 600;
+				color: #b8860b;
+				margin-top: 0.3em;
+			}
+
+			/* Education */
+			.edu-entry {
+				margin-bottom: 1.2em;
+			}
+			.edu-entry h4 {
+				margin-bottom: 0.1em;
+				color: #333;
+			}
+			.edu-meta {
+				color: #666;
+				font-size: 0.88em;
+				line-height: 1.5;
+			}
+			.edu-period {
+				color: #aaa;
+				font-size: 0.85em;
+			}
+
+			/* Teaching */
+			.teaching-entry {
+				display: flex;
+				justify-content: space-between;
+				align-items: baseline;
+				padding: 0.7em 0;
+				border-bottom: 1px solid #f0f0f0;
+				gap: 1em;
+			}
+			.teaching-entry:last-child {
+				border-bottom: none;
+			}
+			.teaching-info h4 {
+				margin: 0 0 0.1em;
+				font-size: 0.95em;
+			}
+			.teaching-info p {
+				margin: 0;
+				color: #888;
+				font-size: 0.85em;
+			}
+			.teaching-period {
+				color: #aaa;
+				font-size: 0.82em;
+				white-space: nowrap;
+				flex-shrink: 0;
+			}
+
+			hr.sec-divider {
+				border: none;
+				border-top: 1px solid #e8e8e8;
+				margin: 1em 0 1.5em;
+			}
+
+			/* Profile photo — bigger, square */
+			#header .profile-photo {
+				flex: 0 0 11em;
+			}
+			#header .profile-photo img {
+				border-radius: 10px;
+				height: 16em;
+				width: 16em;
+			}
+
+			/* Social icons in header */
+			#header .icons a {
+				color: rgba(255,255,255,0.5);
+			}
+			#header .icons a:hover {
+				color: #fff;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
-		<!-- Header -->
-			<header id="header">
-				<div class="inner">
-					<a href="#" class="image avatar"><img src="images/shashwat.png" alt="" /></a>
-					<h1><strong>Shashwat Singh</strong><br />
-					PhD student in Robotics Institute<br />
-					Carnegie Mellon University</a></h1>
-					<p><h1>Research Interest: Robot Design<br /> 
-						and Robot Learning</h1></p>
-					
+		<!-- Header Banner -->
+		<header id="header">
+			<div class="inner">
+				<div class="profile-photo">
+					<img src="images/shashwat.JPG" alt="Shashwat Singh" />
 				</div>
-			</header>
-
-		<!-- Main -->
-			<div id="main">
-
-				<!-- One -->
-					<section id="one">
-						<header class="major">
-							<h2>Introduction</h2>
-						</header>
-						<p>Hi there!! I am Shashwat Singh, a third year PhD student at Robotics Institute at Carnegie Mellon University. I am advised by Prof. Zeynep Temel. Previously, I finished my MS in Robotics from University at Buffalo.</p>
-						<p>My research interests lie in the intersection of robot design and robot learning. I am particularly interested in how we can design robots that can learn from their experiences and adapt to new environments.</p>
-						<p>In my PhD, I am working on designing robots that can adapt to new environments by changing it's bodily morphology and train them to learn from their experiences. I am also interested in how we can use reinforcement learning techniques to improve the performance of robots.</p>
-						<p>In my free time, I enjoy working out, cooking, singing and playing guitar.</p>
-						<!-- <ul class="actions">
-							<li><a href="#" class="button">Learn More</a></li>			
-						</ul> -->
-					</section>
-
-				<!-- Two -->
-					<section id="two">
-						<h2>Recent Work</h2>
-						<div class="row">
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/01.jpg" class="image fit thumb"><img src="images/thumbs/puffybot.png" alt="" /></a>
-								<h3>PuffyBot: An Untethered Shape Morphing Robot for Multimodal Locomotion (Under review)</h3>
-								<p><strong class="award-badge">🏆 Best Poster Award  - Amphibious Robotics Workshop - ICRA 2025</strong></p>
-								<p>We present PuffyBot, an untethered shape morphing robot capable of changing its body morphology to navigate multiple environments.</p>
-								<ul class="actions">
-									<!-- <li><a href="https://your-link-to-paper.com/puffybot.pdf" class="button small">📄 Paper</a></li>
-									<li><a href="https://youtube.com/your-puffybot-video" class="button small">🎥 Video</a></li> -->
-									<li><a href="images/posters/puffybot_poster.pdf" class="button small">🖼️ Poster</a></li>
-								</ul>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/springtail_compress.png" alt="" /></a>
-								<h3>Multi-modal jumping and crawling in an autonomous, springtail-inspired microrobot (ICRA 2024)</h3>
-								<p><strong class="award-badge">🏆 Best Poster Award  - Unconventional Robot Workshop - ICRA 2024</strong></p>
-								<p>This paper presents an autonomous, springtail-inspired microrobot that can crawl and jump. The microrobot has a mass of 980 mg and stands 13 mm tall, and has on-board sensing, computation, and power, enabling autonomy.</p>
-								<ul class="actions">
-									<li><a href="https://ieeexplore.ieee.org/abstract/document/10610130?casa_token=-FJy-O7pMQIAAAAA:zA0kY6C-o0sbF8V6_YbuYtCbY3NagC1Y4R8oqBO9YkOpW_6i1XJvRPEw-HsKZt8Syt7yXvCO" class="button small">📄 Paper</a></li>
-									<li><a href="https://www.youtube.com/watch?v=8GGqDpIlShY" class="button small">🎥 Video</a></li>
-									<li><a href="images/posters/springtail_poster.pdf" class="button small">🖼️ Poster</a></li>
-								</ul>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/03.jpg" class="image fit thumb"><img src="images/thumbs/robot_figure_v2.png" alt="" /></a>
-								<h3>Buffalo Byte: a highly mobile and autonomous millirobot platform (RA-L 2024)</h3>
-								<p>The Buffalo Byte is a small, highly mobile and autonomous millirobot platform that can move on non-smooth, natural terrain. The robot wieghs 11.35 g with an average runtime of 30 minutes with 100mAh battery.</p>
-								<ul class="actions">
-									<li><a href="https://ieeexplore.ieee.org/abstract/document/10465605" class="button small">📄 Paper</a></li>
-									<li><a href="https://www.youtube.com/watch?v=-ZphsPnrn3I" class="button small">🎥 Video</a></li>
-								</ul>
-							</article>
-						</div>
-						<!-- <ul class="actions">
-							<li><a href="#" class="button">Full Portfolio</a></li>
-						</ul> -->
-					</section>
-
-				<!-- Three
-					<section id="three">
-						<h2>Get In Touch</h2>
-						<p>Accumsan pellentesque commodo blandit enim arcu non at amet id arcu magna. Accumsan orci faucibus id eu lorem semper nunc nisi lorem vulputate lorem neque lorem ipsum dolor.</p>
-						<div class="row">
-							<div class="col-8 col-12-small">
-								<form method="post" action="#">
-									<div class="row gtr-uniform gtr-50">
-										<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
-										<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
-										<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
-									</div>
-								</form>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</div>
-							<div class="col-4 col-12-small">
-								<ul class="labeled-icons">
-									<li>
-										<h3 class="icon solid fa-home"><span class="label">Address</span></h3>
-										1234 Somewhere Rd.<br />
-										Nashville, TN 00000<br />
-										United States
-									</li>
-									<li>
-										<h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
-										000-000-0000
-									</li>
-									<li>
-										<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
-										<a href="#">hello@untitled.tld</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</section> -->
-
-				<!-- Four -->
-				<!--
-					<section id="four">
-						<h2>Elements</h2>
-
-						<section>
-							<h4>Text</h4>
-							<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-							This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-							This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-							<hr />
-							<header>
-								<h4>Heading with a Subtitle</h4>
-								<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-							</header>
-							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-							<header>
-								<h5>Heading with a Subtitle</h5>
-								<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-							</header>
-							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-							<hr />
-							<h2>Heading Level 2</h2>
-							<h3>Heading Level 3</h3>
-							<h4>Heading Level 4</h4>
-							<h5>Heading Level 5</h5>
-							<h6>Heading Level 6</h6>
-							<hr />
-							<h5>Blockquote</h5>
-							<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-							<h5>Preformatted</h5>
-							<pre><code>i = 0;
-
-while (!deck.isInOrder()) {
-print 'Iteration ' + i;
-deck.shuffle();
-i++;
-}
-
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-						</section>
-
-						<section>
-							<h4>Lists</h4>
-							<div class="row">
-								<div class="col-6 col-12-xsmall">
-									<h5>Unordered</h5>
-									<ul>
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Sagittis adipiscing lorem eleifend.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-									</ul>
-									<h5>Alternate</h5>
-									<ul class="alt">
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Sagittis adipiscing lorem eleifend.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-									</ul>
-								</div>
-								<div class="col-6 col-12-xsmall">
-									<h5>Ordered</h5>
-									<ol>
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Etiam vel felis at lorem sed viverra.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-										<li>Dolor pulvinar etiam magna etiam.</li>
-										<li>Etiam vel felis at lorem sed viverra.</li>
-										<li>Felis enim feugiat dolore viverra.</li>
-									</ol>
-									<h5>Icons</h5>
-									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-										<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-										<li><a href="#" class="icon brands fa-tumblr"><span class="label">Tumblr</span></a></li>
-									</ul>
-								</div>
-							</div>
-							<h5>Actions</h5>
-							<ul class="actions">
-								<li><a href="#" class="button primary">Default</a></li>
-								<li><a href="#" class="button">Default</a></li>
-							</ul>
-							<ul class="actions small">
-								<li><a href="#" class="button primary small">Small</a></li>
-								<li><a href="#" class="button small">Small</a></li>
-							</ul>
-							<div class="row">
-								<div class="col-6 col-12-small">
-									<ul class="actions stacked">
-										<li><a href="#" class="button primary">Default</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-								</div>
-								<div class="col-6 col-12-small">
-									<ul class="actions stacked">
-										<li><a href="#" class="button primary small">Small</a></li>
-										<li><a href="#" class="button small">Small</a></li>
-									</ul>
-								</div>
-								<div class="col-6 col-12-small">
-									<ul class="actions stacked">
-										<li><a href="#" class="button primary fit">Default</a></li>
-										<li><a href="#" class="button fit">Default</a></li>
-									</ul>
-								</div>
-								<div class="col-6 col-12-small">
-									<ul class="actions stacked">
-										<li><a href="#" class="button primary small fit">Small</a></li>
-										<li><a href="#" class="button small fit">Small</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-
-						<section>
-							<h4>Table</h4>
-							<h5>Default</h5>
-							<div class="table-wrapper">
-								<table>
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th>Description</th>
-											<th>Price</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Item One</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Two</td>
-											<td>Vis ac commodo adipiscing arcu aliquet.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Three</td>
-											<td> Morbi faucibus arcu accumsan lorem.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Four</td>
-											<td>Vitae integer tempus condimentum.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Five</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-									</tbody>
-									<tfoot>
-										<tr>
-											<td colspan="2"></td>
-											<td>100.00</td>
-										</tr>
-									</tfoot>
-								</table>
-							</div>
-
-							<h5>Alternate</h5>
-							<div class="table-wrapper">
-								<table class="alt">
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th>Description</th>
-											<th>Price</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Item One</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Two</td>
-											<td>Vis ac commodo adipiscing arcu aliquet.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Three</td>
-											<td> Morbi faucibus arcu accumsan lorem.</td>
-											<td>29.99</td>
-										</tr>
-										<tr>
-											<td>Item Four</td>
-											<td>Vitae integer tempus condimentum.</td>
-											<td>19.99</td>
-										</tr>
-										<tr>
-											<td>Item Five</td>
-											<td>Ante turpis integer aliquet porttitor.</td>
-											<td>29.99</td>
-										</tr>
-									</tbody>
-									<tfoot>
-										<tr>
-											<td colspan="2"></td>
-											<td>100.00</td>
-										</tr>
-									</tfoot>
-								</table>
-							</div>
-						</section>
-
-						<section>
-							<h4>Buttons</h4>
-							<ul class="actions">
-								<li><a href="#" class="button primary">Primary</a></li>
-								<li><a href="#" class="button">Default</a></li>
-							</ul>
-							<ul class="actions">
-								<li><a href="#" class="button large">Large</a></li>
-								<li><a href="#" class="button">Default</a></li>
-								<li><a href="#" class="button small">Small</a></li>
-							</ul>
-							<ul class="actions fit">
-								<li><a href="#" class="button primary fit">Fit</a></li>
-								<li><a href="#" class="button fit">Fit</a></li>
-							</ul>
-							<ul class="actions fit small">
-								<li><a href="#" class="button primary fit small">Fit + Small</a></li>
-								<li><a href="#" class="button fit small">Fit + Small</a></li>
-							</ul>
-							<ul class="actions">
-								<li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
-								<li><a href="#" class="button icon solid fa-download">Icon</a></li>
-							</ul>
-							<ul class="actions">
-								<li><span class="button primary disabled">Primary</span></li>
-								<li><span class="button disabled">Default</span></li>
-							</ul>
-						</section>
-
-						<section>
-							<h4>Form</h4>
-							<form method="post" action="#">
-								<div class="row gtr-uniform gtr-50">
-									<div class="col-6 col-12-xsmall">
-										<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
-									</div>
-									<div class="col-6 col-12-xsmall">
-										<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
-									</div>
-									<div class="col-12">
-										<select name="demo-category" id="demo-category">
-											<option value="">- Category -</option>
-											<option value="1">Manufacturing</option>
-											<option value="1">Shipping</option>
-											<option value="1">Administration</option>
-											<option value="1">Human Resources</option>
-										</select>
-									</div>
-									<div class="col-4 col-12-small">
-										<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-										<label for="demo-priority-low">Low Priority</label>
-									</div>
-									<div class="col-4 col-12-small">
-										<input type="radio" id="demo-priority-normal" name="demo-priority">
-										<label for="demo-priority-normal">Normal Priority</label>
-									</div>
-									<div class="col-4 col-12-small">
-										<input type="radio" id="demo-priority-high" name="demo-priority">
-										<label for="demo-priority-high">High Priority</label>
-									</div>
-									<div class="col-6 col-12-small">
-										<input type="checkbox" id="demo-copy" name="demo-copy">
-										<label for="demo-copy">Email me a copy of this message</label>
-									</div>
-									<div class="col-6 col-12-small">
-										<input type="checkbox" id="demo-human" name="demo-human" checked>
-										<label for="demo-human">I am a human and not a robot</label>
-									</div>
-									<div class="col-12">
-										<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-									</div>
-									<div class="col-12">
-										<ul class="actions">
-											<li><input type="submit" value="Send Message" class="primary" /></li>
-											<li><input type="reset" value="Reset" /></li>
-										</ul>
-									</div>
-								</div>
-							</form>
-						</section>
-
-						<section>
-							<h4>Image</h4>
-							<h5>Fit</h5>
-							<div class="box alt">
-								<div class="row gtr-50 gtr-uniform">
-									<div class="col-12"><span class="image fit"><img src="images/fulls/05.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/01.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/02.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/03.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/04.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/05.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/06.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/03.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/02.jpg" alt="" /></span></div>
-									<div class="col-4"><span class="image fit"><img src="images/thumbs/01.jpg" alt="" /></span></div>
-								</div>
-							</div>
-							<h5>Left &amp; Right</h5>
-							<p><span class="image left"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-							<p><span class="image right"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-						</section>
-
-					</section>
-				-->
-
-			</div>
-
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<ul class="icons">
-						<li><a href="https://x.com/ShashwatRa" class="icon brands fa-x-twitter"><span class="label">X (Twitter)</span></a></li>		
-						<li><a href="https://github.com/shashwatsing" class="icon brands fa-github"><span class="label">Github</span></a></li>
+				<div class="profile-intro">
+					<h1>Shashwat Singh</h1>
+					<p class="profile-role">
+						PhD Student &middot; Robotics Institute<br />
+						Carnegie Mellon University
+					</p>
+					<!-- <p class="profile-focus">
+						Advised by <a href="https://zoomlab.engineering.cmu.edu/" style="color:rgba(255,255,255,0.8); border-bottom:none;">Prof. Zeynep Temel</a>
+						&nbsp;&middot;&nbsp; ZOOM Lab
+					</p> -->
+					<nav>
+						<ul>
+							<li><a href="#about">About</a></li>
+							<li><a href="#news">News</a></li>
+							<li><a href="#publications">Publications</a></li>
+							<li><a href="#teaching">Teaching</a></li>
+							<li><a href="assets/docs/resume.pdf" target="_blank">CV / Resume</a></li>
+						</ul>
+					</nav>
+					<ul class="icons" style="margin-top: 0.9em;">
 						<li><a href="mailto:shashwa3@andrew.cmu.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+						<li><a href="https://scholar.google.com/citations?user=gsQYr64AAAAJ&hl=en" class="icon solid fa-graduation-cap"><span class="label">Google Scholar</span></a></li>
+						<li><a href="https://github.com/shashwatsing" class="icon brands fa-github"><span class="label">Github</span></a></li>
 						<li><a href="https://www.linkedin.com/in/shashwat-1singh" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-						<li><a href="https://scholar.google.com/citations?user=YOUR_ID" class="icon solid fa-graduation-cap"><span class="label">Google Scholar</span></a></li>
+						<li><a href="https://x.com/ShashwatRa" class="icon brands fa-x-twitter"><span class="label">X (Twitter)</span></a></li>
 					</ul>
 				</div>
-			</footer>
+			</div>
+		</header>
 
+		<!-- Main -->
+		<div id="main">
+
+			<!-- About -->
+			<section id="about">
+				<header class="major">
+					<h2>About Me</h2>
+				</header>
+				<p>
+					Hi! I am a third-year PhD student at the <a href="https://www.ri.cmu.edu/">Robotics Institute</a> at Carnegie Mellon University,
+					advised by <a href="https://zoomlab.engineering.cmu.edu/">Prof. Zeynep Temel</a>.
+					Previously, I completed my M.S. in Robotics at the University at Buffalo under Prof. Ryan St. Pierre,
+					where I built sub-gram autonomous millirobots with multimodal locomotion.
+				</p>
+				<p>
+					My research lies at the intersection of <strong>robot design</strong> and <strong>robot learning</strong>.
+					I design transformable, morphologically adaptive robots and train them using reinforcement learning to
+					traverse complex, multi-terrain environments. I am particularly interested in sim-to-real transfer,
+					mechatronics, and the co-design of body and behavior.
+				</p>
+				<p>Outside of research, I enjoy working out, cooking, singing, and playing guitar.</p>
+
+				<ul class="actions" style="margin-top: 1.5em;">
+					<li><a href="mailto:shashwa3@andrew.cmu.edu" class="button">Email Me</a></li>
+					<li><a href="https://scholar.google.com/citations?user=gsQYr64AAAAJ&hl=en" class="button">Google Scholar</a></li>
+					<li><a href="assets/docs/resume.pdf" class="button" target="_blank">CV / Resume</a></li>
+				</ul>
+
+			</section>
+
+			<!-- News -->
+			<section id="news">
+				<h2>News</h2>
+				<ul class="news-list">
+					<li>
+						<span class="news-date">Jun 2026</span>
+						<span>Paper accepted to <strong>IEEE RA-L</strong>: &ldquo;Physical coupling for collaboration in heterogeneous robot teams.&rdquo;</span>
+					</li>
+					<li>
+						<span class="news-date">May 2026</span>
+						<span>Paper accepted to <strong>IEEE ICRA 2026</strong>: &ldquo;Terraskipper: A centimeter-scale robot for multi-terrain skipping and crawling.&rdquo;</span>
+					</li>
+					<li>
+						<span class="news-date">Apr 2026</span>
+						<span>Paper accepted to <strong>IEEE RoboSoft 2026</strong>: &ldquo;From fold to function: Dynamic modeling and simulation-driven design of origami mechanisms.&rdquo;</span>
+					</li>
+					<li>
+						<span class="news-date">May 2025</span>
+						<span><span class="award-badge">🏆 Best Poster Award</span> at ICRA 2025 Amphibious Robotics Workshop for <em>PuffyBot</em>.</span>
+					</li>
+					<li>
+						<span class="news-date">Nov 2024</span>
+						<span>PuffyBot preprint posted on arXiv: <a href="https://arxiv.org/abs/2511.09885">arXiv:2511.09885</a>.</span>
+					</li>
+					<li>
+						<span class="news-date">2024</span>
+						<span>Received the <strong>Dean's Graduate Achievement Award</strong> at CMU for excellence in research and technical publications.</span>
+					</li>
+					<li>
+						<span class="news-date">May 2024</span>
+						<span><span class="award-badge">🏆 Best Poster Award</span> at ICRA 2024 Unconventional Robot Workshop for the springtail-inspired microrobot.</span>
+					</li>
+					<li>
+						<span class="news-date">May 2024</span>
+						<span>Paper published at <strong>IEEE ICRA 2024</strong>: &ldquo;Multi-modal jumping and crawling in an autonomous, springtail-inspired microrobot.&rdquo;</span>
+					</li>
+					<li>
+						<span class="news-date">Mar 2024</span>
+						<span>Paper published in <strong>IEEE RA-L</strong>: &ldquo;Buffalo Byte: A highly mobile and autonomous millirobot platform.&rdquo;</span>
+					</li>
+				</ul>
+			</section>
+
+			<!-- Publications -->
+			<section id="publications">
+				<h2>Publications</h2>
+				<p style="color:#999; font-size:0.88em; margin-bottom: 0.5em;">
+					Full list on <a href="https://scholar.google.com/citations?user=gsQYr64AAAAJ&hl=en">Google Scholar</a>.
+				</p>
+
+				<div class="pub-year">2026</div>
+
+				<div class="pub-entry">
+					<div class="pub-thumb">
+						<video src="images/thumbs/terraskipper_compress.mp4" autoplay loop muted playsinline></video>
+					</div>
+					<div class="pub-content">
+						<div class="pub-title">Terraskipper: A centimeter-scale robot for multi-terrain skipping and crawling</div>
+						<div class="pub-authors"><strong>Singh, S.</strong>, Zhang, S., Matonis, S., Temel, Z.</div>
+						<div class="pub-venue">IEEE International Conference on Robotics and Automation (ICRA 2026)</div>
+						<div class="pub-links">
+							<a href="#" class="button small">📄 Paper</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="pub-entry">
+					<div class="pub-thumb">
+						<video src="images/thumbs/physical_coupling.mp4" autoplay loop muted playsinline></video>
+					</div>
+					<div class="pub-content">
+						<div class="pub-title">Physical coupling for collaboration in heterogeneous robot teams</div>
+						<div class="pub-authors"><strong>Singh, S.</strong>, Ferlazzo, J., Wang, S., Boateng, S. N., Kramer, Martinez, M. O., Temel, F. Z., Blumenschein, L. H.</div>
+						<div class="pub-venue">IEEE Robotics and Automation Letters (RA-L), 2026</div>
+						<div class="pub-links">
+							<a href="#" class="button small">📄 Paper</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="pub-entry">
+					<div class="pub-thumb">
+						<video src="images/thumbs/ftf.mp4" autoplay loop muted playsinline></video>
+					</div>
+					<div class="pub-content">
+						<div class="pub-title">From fold to function: Dynamic modeling and simulation-driven design of origami mechanisms</div>
+						<div class="pub-authors">Han, T., <strong>Singh, S.</strong>, Patil, S., Temel, Z.</div>
+						<div class="pub-venue">IEEE RoboSoft 2026</div>
+						<div class="pub-links">
+							<a href="#" class="button small">📄 Paper</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="pub-year">2025</div>
+
+				<div class="pub-entry">
+					<div class="pub-thumb">
+						<video src="images/thumbs/puffy.mp4" autoplay loop muted playsinline></video>
+					</div>
+					<div class="pub-content">
+						<div class="pub-title">PuffyBot: An untethered shape morphing robot for multi-environment locomotion</div>
+						<div class="pub-authors"><strong>Singh, S.</strong>, Si, Z., Temel, Z.</div>
+						<div class="pub-venue">arXiv preprint arXiv:2511.09885, 2025</div>
+						<div class="pub-links">
+							<a href="https://arxiv.org/abs/2511.09885" class="button small">📄 arXiv</a>
+							<a href="images/posters/puffybot_poster.pdf" class="button small">🖼️ Poster</a>
+						</div>
+						<div class="pub-badge">🏆 Best Poster Award – ICRA 2025 Amphibious Robotics Workshop</div>
+					</div>
+				</div>
+
+				<div class="pub-entry">
+					<div class="pub-thumb">
+						<video src="images/thumbs/puzzlebot.mp4" autoplay loop muted playsinline></video>
+					</div>
+					<div class="pub-content">
+						<div class="pub-title">Reconfigurable robot swarms for terrain traversal with passive coupling mechanisms</div>
+						<div class="pub-authors">Yi, S., <strong>Singh, S.</strong>, Seo, A., St Pierre, R., Sycara, K., Temel, Z.</div>
+						<div class="pub-venue">Autonomous Robots, vol. 49, no. 3, pp. 1–18, 2025</div>
+						<div class="pub-links">
+							<a href="#" class="button small">📄 Paper</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="pub-year">2024</div>
+
+				<div class="pub-entry">
+					<div class="pub-thumb">
+						<img src="images/thumbs/robot_figure_v2.png" alt="Buffalo Byte" />
+					</div>
+					<div class="pub-content">
+						<div class="pub-title">Buffalo Byte: A highly mobile and autonomous millirobot platform</div>
+						<div class="pub-authors"><strong>Singh, S.</strong>, Truax, R., Pierre, R. S.</div>
+						<div class="pub-venue">IEEE Robotics and Automation Letters (RA-L), vol. 9, no. 5, pp. 4067–4074, 2024</div>
+						<div class="pub-links">
+							<a href="https://ieeexplore.ieee.org/abstract/document/10465605" class="button small">📄 Paper</a>
+							<a href="https://www.youtube.com/watch?v=-ZphsPnrn3I" class="button small">🎥 Video</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="pub-entry">
+					<div class="pub-thumb">
+						<img src="images/thumbs/springtail_compress.png" alt="Springtail robot" />
+					</div>
+					<div class="pub-content">
+						<div class="pub-title">Multi-modal jumping and crawling in an autonomous, springtail-inspired microrobot</div>
+						<div class="pub-authors"><strong>Singh, S.</strong>, Temel, Z., Pierre, R. S.</div>
+						<div class="pub-venue">IEEE International Conference on Robotics and Automation (ICRA 2024), pp. 5999–6005</div>
+						<div class="pub-links">
+							<a href="https://ieeexplore.ieee.org/abstract/document/10610130" class="button small">📄 Paper</a>
+							<a href="https://www.youtube.com/watch?v=8GGqDpIlShY" class="button small">🎥 Video</a>
+							<a href="images/posters/springtail_poster.pdf" class="button small">🖼️ Poster</a>
+						</div>
+						<div class="pub-badge">🏆 Best Poster Award – ICRA 2024 Unconventional Robot Workshop</div>
+					</div>
+				</div>
+
+				<div class="pub-entry">
+					<div class="pub-thumb">
+						<div class="pub-thumb-placeholder">🤖</div>
+					</div>
+					<div class="pub-content">
+						<div class="pub-title">Heterogeneous collaboration: A new approach for search and rescue operations</div>
+						<div class="pub-authors">Boateng, S. N., <strong>Singh, S.</strong>, Ugur, M., Wang, S., Kramer, M., Osei, I., Sobek, O., Martinez, M. O., Temel, F. Z., Blumenschein, L. H.</div>
+						<div class="pub-venue">IEEE International Symposium on Safety, Security and Rescue Robotics (SSRR 2024), pp. 142–147</div>
+						<div class="pub-links">
+							<a href="#" class="button small">📄 Paper</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="pub-entry">
+					<div class="pub-thumb">
+						<video src="images/thumbs/torque_reversal.mp4" autoplay loop muted playsinline></video>
+					</div>
+					<div class="pub-content">
+						<div class="pub-title">Design and control of jumping microrobots with torque reversal latches</div>
+						<div class="pub-authors">Skowronski, N., Pour, M. M., <strong>Singh, S.</strong>, Longo, S. J., St Pierre, R.</div>
+						<div class="pub-venue">Bioinspiration &amp; Biomimetics, vol. 19, no. 4, p. 046007, 2024</div>
+						<div class="pub-links">
+							<a href="#" class="button small">📄 Paper</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Teaching -->
+			<section id="teaching">
+				<h2>Teaching</h2>
+				<div class="teaching-entry">
+					<div class="teaching-info">
+						<h4>15-482: Autonomous Agents</h4>
+						<p>Teaching Assistant &middot; Carnegie Mellon University</p>
+					</div>
+					<span class="teaching-period">Aug – Dec 2025</span>
+				</div>
+				<div class="teaching-entry">
+					<div class="teaching-info">
+						<h4>16-235: Fantastic Robots and How to Fold Them</h4>
+						<p>Teaching Assistant &middot; Carnegie Mellon University</p>
+					</div>
+					<span class="teaching-period">Jan – May 2025</span>
+				</div>
+			</section>
+
+			<!-- Education -->
+			<!-- <section id="education">
+				<h2>Education</h2>
+				<hr class="sec-divider">
+
+				<div class="edu-entry">
+					<h4>Carnegie Mellon University &mdash; Pittsburgh, USA</h4>
+					<div class="edu-meta">
+						Ph.D. in Robotics &ensp;<span class="edu-period">Aug 2023 – Present</span><br />
+						Advisor: Prof. Zeynep Temel &middot; ZOOM Lab<br />
+						Research: RL-based locomotion, mechatronics, mechanical design
+					</div>
+				</div>
+
+				<div class="edu-entry">
+					<h4>University at Buffalo &mdash; Buffalo, NY, USA</h4>
+					<div class="edu-meta">
+						M.S. in Robotics &ensp;<span class="edu-period">Aug 2021 – Jul 2023</span><br />
+						Advisor: Prof. Ryan St. Pierre &middot; Robot Form and Function Lab<br />
+						Thesis: <em>Buffalo Byte: A highly mobile and autonomous millirobot platform</em>
+					</div>
+				</div>
+
+				<div class="edu-entry">
+					<h4>University of Allahabad &mdash; Prayagraj, India</h4>
+					<div class="edu-meta">
+						B.Tech. in Electronics and Communication &ensp;<span class="edu-period">Aug 2017 – Jun 2021</span>
+					</div>
+				</div>
+
+				<h3 style="margin-top: 2.5em;">Skills</h3>
+				<hr class="sec-divider">
+				<div class="table-wrapper">
+					<table>
+						<tbody>
+							<tr>
+								<td><strong>Robotics &amp; Autonomy</strong></td>
+								<td>Reinforcement Learning (PPO, SAC), Optimal Control, Sim-to-Real</td>
+							</tr>
+							<tr>
+								<td><strong>Programming &amp; Simulation</strong></td>
+								<td>Python, C++, PyTorch, ROS/ROS2, Isaac Lab/Sim, MuJoCo</td>
+							</tr>
+							<tr>
+								<td><strong>Embedded Systems</strong></td>
+								<td>Jetson Orin, Raspberry Pi, Arduino, Serial/RS-485, CAN</td>
+							</tr>
+							<tr>
+								<td><strong>Mechanical &amp; Hardware</strong></td>
+								<td>OnShape, Fusion 360, KiCAD, Sensor Integration, Rapid Prototyping</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</section> -->
+
+		</div>
+
+		<!-- Footer
+		<footer id="footer">
+			<div class="inner">
+				<ul class="icons">
+					<li><a href="https://x.com/ShashwatRa" class="icon brands fa-x-twitter"><span class="label">X (Twitter)</span></a></li>
+					<li><a href="https://github.com/shashwatsing" class="icon brands fa-github"><span class="label">Github</span></a></li>
+					<li><a href="mailto:shashwa3@andrew.cmu.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+					<li><a href="https://www.linkedin.com/in/shashwat-1singh" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+					<li><a href="https://scholar.google.com/citations?user=gsQYr64AAAAJ&hl=en" class="icon solid fa-graduation-cap"><span class="label">Google Scholar</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Shashwat Singh 2025</li>
+				</ul>
+			</div>
+		</footer> -->
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.poptrox.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
 
 	</body>
 </html>

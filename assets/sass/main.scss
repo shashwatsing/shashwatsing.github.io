@@ -1631,3 +1631,103 @@ $size-header-pad: 4em;
 			}
 
 	}
+
+/* Academic profile layout */
+
+	#header {
+		align-items: center;
+		background-position: center;
+		background-size: cover;
+		display: block;
+		height: auto;
+		padding: 3.5em 2em;
+		position: relative;
+		text-align: left;
+		width: 100%;
+
+		> .inner {
+			align-items: center;
+			display: flex;
+			gap: 2em;
+			margin: 0 auto;
+			max-width: 72em;
+		}
+
+		.profile-photo {
+			flex: 0 0 9em;
+
+			img {
+				border: solid 3px rgba(255, 255, 255, 0.75);
+				border-radius: 50%;
+				display: block;
+				height: 9em;
+				object-fit: cover;
+				width: 9em;
+			}
+		}
+
+		.profile-intro {
+			width: auto;
+
+			h1 {
+				color: #fff;
+				font-size: 2.25em;
+				font-weight: 400;
+				line-height: 1.2;
+				margin: 0 0 0.35em;
+			}
+		}
+
+		.profile-role {
+			color: rgba(255, 255, 255, 0.85);
+			font-size: 1.1em;
+			line-height: 1.5;
+			margin: 0 0 0.65em;
+		}
+
+		.profile-focus {
+			color: rgba(255, 255, 255, 0.65);
+			margin: 0;
+		}
+	}
+
+	#main {
+		margin: 0 auto;
+		max-width: 72em;
+		padding: 4em 2em;
+		width: 100%;
+	}
+
+	#footer {
+		background: #1f1815;
+		padding: 2em;
+		text-align: center;
+
+		.icons {
+			margin: 0;
+		}
+	}
+
+	@include breakpoint('<=small') {
+		#header {
+			padding: 2.5em 1.5em;
+			text-align: center;
+
+			> .inner {
+				flex-direction: column;
+				gap: 1.25em;
+			}
+
+			.profile-photo {
+				flex-basis: auto;
+			}
+
+			.profile-intro h1 {
+				font-size: 1.85em;
+			}
+		}
+
+		#main {
+			padding: 3em 1.5em;
+		}
+	}
