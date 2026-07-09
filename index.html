@@ -6,6 +6,77 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
+			/* ── Dark mode ── */
+			body.dark-mode {
+				background: #1a1a1a;
+			}
+			body.dark-mode,
+			body.dark-mode input,
+			body.dark-mode select,
+			body.dark-mode textarea {
+				color: #b8b8b8;
+			}
+			body.dark-mode strong, body.dark-mode b { color: #d0d0d0; }
+			body.dark-mode h1, body.dark-mode h2, body.dark-mode h3,
+			body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 { color: #c8c8c8; }
+			body.dark-mode hr { border-bottom-color: #2a2a2a; }
+			body.dark-mode code { background: #242424; border-color: #333; }
+			body.dark-mode .box { border-color: #2a2a2a; }
+			body.dark-mode ul.alt li { border-top-color: #2a2a2a; }
+			body.dark-mode .button,
+			body.dark-mode input[type="submit"],
+			body.dark-mode input[type="reset"],
+			body.dark-mode input[type="button"] { border-color: #444; color: #aaa !important; }
+			body.dark-mode .button:hover,
+			body.dark-mode input[type="submit"]:hover,
+			body.dark-mode input[type="reset"]:hover,
+			body.dark-mode input[type="button"]:hover { border-color: #49bf9d; color: #49bf9d !important; }
+			body.dark-mode table tbody tr { border-color: #2a2a2a; }
+			body.dark-mode table tbody tr:nth-child(2n+1) { background-color: #242424; }
+			body.dark-mode table th { color: #c0c0c0; }
+			body.dark-mode table thead { border-bottom-color: #2a2a2a; }
+			body.dark-mode #main > section { border-top-color: #2a2a2a; }
+			body.dark-mode header p { color: #888; }
+			/* inline-style overrides */
+			body.dark-mode .news-list li { border-bottom-color: #2a2a2a; }
+			body.dark-mode .pub-year { color: #c0c0c0; border-bottom-color: #2a2a2a; }
+			body.dark-mode .pub-title { color: #d8d8d8; }
+			body.dark-mode .pub-authors { color: #aaa; }
+			body.dark-mode .pub-authors strong { color: #d0d0d0; }
+			body.dark-mode .pub-venue { color: #888; }
+			body.dark-mode .pub-thumb img,
+			body.dark-mode .pub-thumb video { border-color: #2a2a2a; }
+			body.dark-mode .pub-thumb-placeholder { background: #242424; border-color: #333; color: #555; }
+			body.dark-mode .teaching-entry { border-bottom-color: #2a2a2a; }
+			body.dark-mode .teaching-info h4 { color: #c8c8c8; }
+			body.dark-mode .teaching-info p { color: #888; }
+			body.dark-mode .edu-entry h4 { color: #c8c8c8; }
+			body.dark-mode .edu-meta { color: #aaa; }
+			body.dark-mode hr.sec-divider { border-top-color: #2a2a2a; }
+
+			/* ── Toggle button ── */
+			#theme-toggle {
+				position: fixed;
+				top: 0.9em;
+				right: 1em;
+				z-index: 1000;
+				background: rgba(0,0,0,0.35);
+				border: 1px solid rgba(255,255,255,0.25);
+				border-radius: 50%;
+				width: 2.4em;
+				height: 2.4em;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 1.05em;
+				line-height: 1;
+				color: #fff;
+				transition: background 0.2s;
+				padding: 0;
+			}
+			#theme-toggle:hover { background: rgba(0,0,0,0.55); }
+
 			/* Navigation in header banner */
 			#header nav {
 				margin-top: 1em;
@@ -225,8 +296,22 @@
 				color: #fff;
 			}
 		</style>
+		<script>
+			(function() {
+				var saved = localStorage.getItem('theme');
+				var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+				if (saved === 'dark' || (!saved && prefersDark)) {
+					document.documentElement.classList.add('dark-mode-init');
+				}
+			})();
+		</script>
+		<style>
+			html.dark-mode-init body { background: #1a1a1a; }
+		</style>
 	</head>
 	<body class="is-preload">
+
+		<button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
 
 		<!-- Header Banner -->
 		<header id="header">
@@ -355,7 +440,7 @@
 						<div class="pub-authors"><strong>Singh, S.</strong>, Zhang, S., Matonis, S., Temel, Z.</div>
 						<div class="pub-venue">IEEE International Conference on Robotics and Automation (ICRA 2026)</div>
 						<div class="pub-links">
-							<a href="#" class="button small">📄 Paper</a>
+							<a href="https://ieeexplore.ieee.org/abstract/document/10610130" class="button small">📄 Paper</a>
 						</div>
 					</div>
 				</div>
@@ -366,10 +451,10 @@
 					</div>
 					<div class="pub-content">
 						<div class="pub-title">Physical coupling for collaboration in heterogeneous robot teams</div>
-						<div class="pub-authors"><strong>Singh, S.</strong>, Ferlazzo, J., Wang, S., Boateng, S. N., Kramer, Martinez, M. O., Temel, F. Z., Blumenschein, L. H.</div>
+						<div class="pub-authors"><strong>Singh, S.</strong>, Ferlazzo, J., Wang, S., Boateng, S. N., Kramer, M., Martinez, M. O., Temel, F. Z., Blumenschein, L. H.</div>
 						<div class="pub-venue">IEEE Robotics and Automation Letters (RA-L), 2026</div>
 						<div class="pub-links">
-							<a href="#" class="button small">📄 Paper</a>
+							<a href="https://ieeexplore.ieee.org/abstract/document/11358668" class="button small">📄 Paper</a>
 						</div>
 					</div>
 				</div>
@@ -383,7 +468,7 @@
 						<div class="pub-authors">Han, T., <strong>Singh, S.</strong>, Patil, S., Temel, Z.</div>
 						<div class="pub-venue">IEEE RoboSoft 2026</div>
 						<div class="pub-links">
-							<a href="#" class="button small">📄 Paper</a>
+							<a href="https://ieeexplore.ieee.org/abstract/document/11522894" class="button small">📄 Paper</a>
 						</div>
 					</div>
 				</div>
@@ -456,7 +541,7 @@
 
 				<div class="pub-entry">
 					<div class="pub-thumb">
-						<image src="images/thumbs/collaboration.pdf" alt="Heterogeneous collaboration" /></image>
+						<img src="images/thumbs/collaboration.pdf" alt="Heterogeneous collaboration" />
 					</div>
 					<div class="pub-content">
 						<div class="pub-title">Heterogeneous collaboration: A new approach for search and rescue operations</div>
@@ -575,6 +660,29 @@
 				</ul>
 			</div>
 		</footer> -->
+
+		<!-- Dark/light mode toggle -->
+		<script>
+			(function() {
+				var btn = document.getElementById('theme-toggle');
+				var saved = localStorage.getItem('theme');
+				var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+				var dark = saved ? saved === 'dark' : prefersDark;
+
+				function apply(isDark) {
+					document.body.classList.toggle('dark-mode', isDark);
+					btn.textContent = isDark ? '☀' : '🌙';
+				}
+
+				apply(dark);
+
+				btn.addEventListener('click', function() {
+					dark = !dark;
+					localStorage.setItem('theme', dark ? 'dark' : 'light');
+					apply(dark);
+				});
+			})();
+		</script>
 
 		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
