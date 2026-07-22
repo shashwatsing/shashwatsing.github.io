@@ -7,52 +7,52 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
 			/* ── Dark mode ── */
-			body.dark-mode {
+			html.dark-mode body {
 				background: #1a1a1a;
 			}
-			body.dark-mode,
-			body.dark-mode input,
-			body.dark-mode select,
-			body.dark-mode textarea {
+			html.dark-mode body,
+			html.dark-mode input,
+			html.dark-mode select,
+			html.dark-mode textarea {
 				color: #b8b8b8;
 			}
-			body.dark-mode strong, body.dark-mode b { color: #d0d0d0; }
-			body.dark-mode h1, body.dark-mode h2, body.dark-mode h3,
-			body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 { color: #c8c8c8; }
-			body.dark-mode hr { border-bottom-color: #2a2a2a; }
-			body.dark-mode code { background: #242424; border-color: #333; }
-			body.dark-mode .box { border-color: #2a2a2a; }
-			body.dark-mode ul.alt li { border-top-color: #2a2a2a; }
-			body.dark-mode .button,
-			body.dark-mode input[type="submit"],
-			body.dark-mode input[type="reset"],
-			body.dark-mode input[type="button"] { border-color: #444; color: #aaa !important; }
-			body.dark-mode .button:hover,
-			body.dark-mode input[type="submit"]:hover,
-			body.dark-mode input[type="reset"]:hover,
-			body.dark-mode input[type="button"]:hover { border-color: #49bf9d; color: #49bf9d !important; }
-			body.dark-mode table tbody tr { border-color: #2a2a2a; }
-			body.dark-mode table tbody tr:nth-child(2n+1) { background-color: #242424; }
-			body.dark-mode table th { color: #c0c0c0; }
-			body.dark-mode table thead { border-bottom-color: #2a2a2a; }
-			body.dark-mode #main > section { border-top-color: #2a2a2a; }
-			body.dark-mode header p { color: #888; }
+			html.dark-mode strong, html.dark-mode b { color: #d0d0d0; }
+			html.dark-mode h1, html.dark-mode h2, html.dark-mode h3,
+			html.dark-mode h4, html.dark-mode h5, html.dark-mode h6 { color: #c8c8c8; }
+			html.dark-mode hr { border-bottom-color: #2a2a2a; }
+			html.dark-mode code { background: #242424; border-color: #333; }
+			html.dark-mode .box { border-color: #2a2a2a; }
+			html.dark-mode ul.alt li { border-top-color: #2a2a2a; }
+			html.dark-mode .button,
+			html.dark-mode input[type="submit"],
+			html.dark-mode input[type="reset"],
+			html.dark-mode input[type="button"] { border-color: #444; color: #aaa !important; }
+			html.dark-mode .button:hover,
+			html.dark-mode input[type="submit"]:hover,
+			html.dark-mode input[type="reset"]:hover,
+			html.dark-mode input[type="button"]:hover { border-color: #49bf9d; color: #49bf9d !important; }
+			html.dark-mode table tbody tr { border-color: #2a2a2a; }
+			html.dark-mode table tbody tr:nth-child(2n+1) { background-color: #242424; }
+			html.dark-mode table th { color: #c0c0c0; }
+			html.dark-mode table thead { border-bottom-color: #2a2a2a; }
+			html.dark-mode #main > section { border-top-color: #2a2a2a; }
+			html.dark-mode header p { color: #888; }
 			/* inline-style overrides */
-			body.dark-mode .news-list li { border-bottom-color: #2a2a2a; }
-			body.dark-mode .pub-year { color: #c0c0c0; border-bottom-color: #2a2a2a; }
-			body.dark-mode .pub-title { color: #d8d8d8; }
-			body.dark-mode .pub-authors { color: #aaa; }
-			body.dark-mode .pub-authors strong { color: #d0d0d0; }
-			body.dark-mode .pub-venue { color: #888; }
-			body.dark-mode .pub-thumb img,
-			body.dark-mode .pub-thumb video { border-color: #2a2a2a; }
-			body.dark-mode .pub-thumb-placeholder { background: #242424; border-color: #333; color: #555; }
-			body.dark-mode .teaching-entry { border-bottom-color: #2a2a2a; }
-			body.dark-mode .teaching-info h4 { color: #c8c8c8; }
-			body.dark-mode .teaching-info p { color: #888; }
-			body.dark-mode .edu-entry h4 { color: #c8c8c8; }
-			body.dark-mode .edu-meta { color: #aaa; }
-			body.dark-mode hr.sec-divider { border-top-color: #2a2a2a; }
+			html.dark-mode .news-list li { border-bottom-color: #2a2a2a; }
+			html.dark-mode .pub-year { color: #c0c0c0; border-bottom-color: #2a2a2a; }
+			html.dark-mode .pub-title { color: #d8d8d8; }
+			html.dark-mode .pub-authors { color: #aaa; }
+			html.dark-mode .pub-authors strong { color: #d0d0d0; }
+			html.dark-mode .pub-venue { color: #888; }
+			html.dark-mode .pub-thumb img,
+			html.dark-mode .pub-thumb video { border-color: #2a2a2a; }
+			html.dark-mode .pub-thumb-placeholder { background: #242424; border-color: #333; color: #555; }
+			html.dark-mode .teaching-entry { border-bottom-color: #2a2a2a; }
+			html.dark-mode .teaching-info h4 { color: #c8c8c8; }
+			html.dark-mode .teaching-info p { color: #888; }
+			html.dark-mode .edu-entry h4 { color: #c8c8c8; }
+			html.dark-mode .edu-meta { color: #aaa; }
+			html.dark-mode hr.sec-divider { border-top-color: #2a2a2a; }
 
 			/* ── Toggle button ── */
 			#theme-toggle {
@@ -301,13 +301,10 @@
 				var saved = localStorage.getItem('theme');
 				var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 				if (saved === 'dark' || (!saved && prefersDark)) {
-					document.documentElement.classList.add('dark-mode-init');
+					document.documentElement.classList.add('dark-mode');
 				}
 			})();
 		</script>
-		<style>
-			html.dark-mode-init body { background: #1a1a1a; }
-		</style>
 	</head>
 	<body class="is-preload">
 
@@ -670,7 +667,7 @@
 				var dark = saved ? saved === 'dark' : prefersDark;
 
 				function apply(isDark) {
-					document.body.classList.toggle('dark-mode', isDark);
+					document.documentElement.classList.toggle('dark-mode', isDark);
 					btn.textContent = isDark ? '☀' : '🌙';
 				}
 
