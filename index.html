@@ -26,6 +26,11 @@
 		<!-- Favicon (inline SVG, no extra file needed) -->
 		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2349bf9d'/%3E%3Ctext x='50' y='68' font-size='60' font-family='Arial,sans-serif' font-weight='bold' text-anchor='middle' fill='white'%3ES%3C/text%3E%3C/svg%3E" />
 
+		<!-- Typography -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
 			/* ── Dark mode ── */
@@ -129,33 +134,67 @@
 				margin-bottom: 3em;
 			}
 
-			/* News */
+			/* News — vertical timeline */
 			.news-list {
 				list-style: none;
 				padding: 0;
 				margin: 0;
+				position: relative;
+			}
+			/* the running line */
+			.news-list::before {
+				content: "";
+				position: absolute;
+				left: 6em;
+				top: 0.9em;
+				bottom: 0.9em;
+				width: 2px;
+				background: #e6e6e6;
 			}
 			.news-list li {
+				position: relative;
 				display: flex;
-				gap: 1.2em;
-				padding: 0.55em 0;
-				border-bottom: 1px solid #f0f0f0;
+				gap: 0;
+				padding: 0.5em 0;
 				align-items: baseline;
 				font-size: 0.95em;
 			}
-			.news-list li:last-child {
-				border-bottom: none;
-			}
 			.news-date {
-				min-width: 5.5em;
+				width: 6em;
+				min-width: 6em;
+				padding-right: 1em;
+				text-align: right;
+				white-space: nowrap;
 				color: #aaa;
 				font-size: 0.85em;
 				flex-shrink: 0;
 			}
+			.news-list li > span:last-child {
+				flex: 1;
+				padding-left: 1.4em;
+			}
 			.award-badge {
-				color: #b8860b;
 				font-weight: 600;
 			}
+
+			html.dark-mode .news-list::before { background: #333; }
+
+			/* Scrollable window — ~4 items, scroll for the rest */
+			.news-scroll {
+				max-height: 11em;
+				overflow-y: auto;
+				padding-right: 0.6em;
+				scrollbar-width: thin;
+				scrollbar-color: #cfcfcf transparent;
+			}
+			.news-scroll::-webkit-scrollbar { width: 7px; }
+			.news-scroll::-webkit-scrollbar-thumb {
+				background: #cfcfcf;
+				border-radius: 4px;
+			}
+			.news-scroll::-webkit-scrollbar-track { background: transparent; }
+			html.dark-mode .news-scroll { scrollbar-color: #3a3a3a transparent; }
+			html.dark-mode .news-scroll::-webkit-scrollbar-thumb { background: #3a3a3a; }
 
 			/* Publications */
 			.pub-year {
@@ -317,6 +356,137 @@
 			#header .icons a:hover {
 				color: #fff;
 			}
+
+			/* ─────────────────────────────────────────────
+			   Refined academic polish — typography + cards
+			   ───────────────────────────────────────────── */
+
+			/* Typography: Inter everywhere, calmer reading rhythm */
+			body,
+			input, select, textarea {
+				font-family: "Inter", "Source Sans Pro", Helvetica, sans-serif;
+				letter-spacing: -0.006em;
+			}
+			h1, h2, h3, h4, h5, h6 {
+				font-family: "Inter", "Source Sans Pro", Helvetica, sans-serif;
+				letter-spacing: -0.02em;
+			}
+			#main {
+				font-size: 16px;
+			}
+			#main p, #main li {
+				line-height: 1.65;
+			}
+			#main p {
+				color: #4a4a4a;
+			}
+			html.dark-mode #main p { color: #b0b0b0; }
+
+			/* Section headers: weight + a short accent underline */
+			#main header.major h2,
+			#main > section > h2 {
+				font-weight: 700;
+				font-size: 1.5em;
+				letter-spacing: -0.02em;
+				position: relative;
+				padding-bottom: 0.35em;
+				margin-bottom: 0.9em;
+			}
+			#main header.major h2::after,
+			#main > section > h2::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: 2.2em;
+				height: 3px;
+				border-radius: 3px;
+				background: #49bf9d;
+			}
+
+			/* Smooth anchor scrolling for the nav links */
+			html { scroll-behavior: smooth; }
+
+			/* Publication entries → cards with a soft hover lift */
+			.pub-entry {
+				background: #fafafa;
+				border: 1px solid #ececec;
+				border-radius: 10px;
+				padding: 1em;
+				gap: 1.1em;
+				transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+			}
+			.pub-entry:hover {
+				transform: translateY(-3px);
+				box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+				border-color: #d8d8d8;
+			}
+			.pub-thumb img,
+			.pub-thumb video {
+				border-radius: 8px;
+			}
+			/* Keep the existing green accent, tie it to the card */
+			.pub-content {
+				border-left-width: 0;
+				padding-left: 0;
+			}
+			.pub-entry:hover .pub-content {
+				border-left-color: transparent;
+			}
+
+			html.dark-mode .pub-entry {
+				background: #202020;
+				border-color: #2c2c2c;
+			}
+			html.dark-mode .pub-entry:hover {
+				box-shadow: 0 10px 26px rgba(0,0,0,0.4);
+				border-color: #3a3a3a;
+			}
+
+			/* Buttons: consistent rounding to match cards */
+			.button.small { border-radius: 6px; }
+
+			/* ─────────────────────────────────────────────
+			   Hero banner + color
+			   ───────────────────────────────────────────── */
+
+			/* Teal-tinted gradient over the photo so text/icons pop */
+			#header {
+				background-image:
+					linear-gradient(155deg, rgba(23,54,49,0.35) 0%, rgba(12,16,20,0.86) 100%),
+					url("assets/css/images/overlay.png"),
+					url("images/bg.jpg");
+				background-size: cover, auto, cover;
+				background-position: center, top left, center;
+				background-repeat: no-repeat, repeat, no-repeat;
+			}
+
+			/* Profile photo: soft ring + depth */
+			#header .profile-photo img {
+				border: 3px solid rgba(255,255,255,0.85);
+				box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+			}
+
+			/* Name + role hierarchy */
+			#header h1 {
+				font-weight: 800;
+				letter-spacing: -0.03em;
+			}
+			#header .profile-role {
+				color: rgba(255,255,255,0.72);
+			}
+			.profile-tagline {
+				color: rgba(255,255,255,0.55);
+				font-size: 0.82em;
+				font-style: italic;
+				line-height: 1.5;
+				margin: 0.55em 0 0;
+			}
+
+			/* Unified award accent (amber that sits well beside the teal) */
+			.award-badge, .pub-badge { color: #bf9b30; }
+			html.dark-mode .award-badge,
+			html.dark-mode .pub-badge { color: #d4ad3d; }
 		</style>
 		<script>
 			(function() {
@@ -343,6 +513,9 @@
 					<p class="profile-role">
 						PhD Student &middot; Robotics Institute<br />
 						Carnegie Mellon University
+					</p>
+					<p class="profile-tagline">
+						Designing transformable robots that learn to move across any terrain.
 					</p>
 					<!-- <p class="profile-focus">
 						Advised by <a href="https://zoomlab.engineering.cmu.edu/" style="color:rgba(255,255,255,0.8); border-bottom:none;">Prof. Zeynep Temel</a>
@@ -401,6 +574,7 @@
 			<!-- News -->
 			<section id="news">
 				<h2>News</h2>
+				<div class="news-scroll">
 				<ul class="news-list">
 					<li>
 						<span class="news-date">Jun 2026</span>
@@ -439,6 +613,7 @@
 						<span>Paper published in <strong>IEEE RA-L</strong>: &ldquo;Buffalo Byte: A highly mobile and autonomous millirobot platform.&rdquo;</span>
 					</li>
 				</ul>
+				</div>
 			</section>
 
 			<!-- Publications -->
