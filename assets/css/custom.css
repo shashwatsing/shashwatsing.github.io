@@ -511,3 +511,17 @@ html.dark-mode .pub-badge { color: #d4ad3d; }
 	color: #49bf9d;
 	border-bottom: 1px solid rgba(73,191,157,0.6);
 }
+
+/* Mentoring / talks list entries with a sub-line */
+.service-block ul li:has(.service-note) {
+	padding: 0.4em 0;
+}
+.service-note a {
+	color: inherit;
+	border-bottom: 1px dotted rgba(0,0,0,0.2);
+}
+.service-note a:hover {
+	color: #49bf9d;
+	border-bottom-color: #49bf9d;
+}
+html.dark-mode .service-note a { border-bottom-color: rgba(255,255,255,0.2); }
