@@ -4,32 +4,66 @@
 		<title>Shashwat Singh</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="color-scheme" content="light dark" />
+		<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
 
 		<!-- SEO -->
 		<meta name="description" content="Shashwat Singh is a PhD student at the Robotics Institute, Carnegie Mellon University, working at the intersection of robot design and robot learning — transformable robots, RL-based locomotion, and sim-to-real transfer." />
 		<meta name="author" content="Shashwat Singh" />
-		<link rel="canonical" href="https://shashwatsing.github.io/shashwat/" />
+		<link rel="canonical" href="https://shashwatsing.github.io/" />
 
 		<!-- Open Graph / social sharing -->
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="Shashwat Singh — Robotics PhD, CMU" />
 		<meta property="og:description" content="PhD student at CMU's Robotics Institute working on transformable robots, RL-based locomotion, and sim-to-real transfer." />
-		<meta property="og:image" content="https://shashwatsing.github.io/shashwat/images/shashwat.JPG" />
-		<meta property="og:url" content="https://shashwatsing.github.io/shashwat/" />
+		<meta property="og:image" content="https://shashwatsing.github.io/images/social-card.jpg" />
+		<meta property="og:url" content="https://shashwatsing.github.io/" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
 
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content="Shashwat Singh — Robotics PhD, CMU" />
 		<meta name="twitter:description" content="PhD student at CMU's Robotics Institute working on transformable robots, RL-based locomotion, and sim-to-real transfer." />
-		<meta name="twitter:image" content="https://shashwatsing.github.io/shashwat/images/shashwat.JPG" />
+		<meta name="twitter:image" content="https://shashwatsing.github.io/images/social-card.jpg" />
 
 		<!-- Favicon (inline SVG, no extra file needed) -->
 		<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2349bf9d'/%3E%3Ctext x='50' y='68' font-size='60' font-family='Arial,sans-serif' font-weight='bold' text-anchor='middle' fill='white'%3ES%3C/text%3E%3C/svg%3E" />
 
-		<!-- Typography -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+		<!-- Typography (self-hosted Inter — no third-party request) -->
+		<link rel="preload" href="assets/webfonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="stylesheet" href="assets/css/fonts.css" />
+
+		<!-- Structured data -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Shashwat Singh",
+			"url": "https://shashwatsing.github.io/",
+			"image": "https://shashwatsing.github.io/images/social-card.jpg",
+			"email": "mailto:shashwa3@andrew.cmu.edu",
+			"jobTitle": "PhD Student",
+			"description": "PhD student at the Robotics Institute, Carnegie Mellon University, working at the intersection of robot design and robot learning.",
+			"affiliation": {
+				"@type": "Organization",
+				"name": "Robotics Institute, Carnegie Mellon University",
+				"url": "https://www.ri.cmu.edu/"
+			},
+			"alumniOf": [
+				{ "@type": "Organization", "name": "University at Buffalo" },
+				{ "@type": "Organization", "name": "University of Allahabad" }
+			],
+			"knowsAbout": ["Robotics", "Reinforcement Learning", "Robot Design", "Sim-to-Real Transfer", "Millirobots"],
+			"sameAs": [
+				"https://scholar.google.com/citations?user=gsQYr64AAAAJ&hl=en",
+				"https://github.com/shashwatsing",
+				"https://www.linkedin.com/in/shashwat-1singh",
+				"https://x.com/ShashwatRa"
+			]
+		}
+		</script>
 
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="assets/css/custom.css" />
@@ -45,7 +79,9 @@
 	</head>
 	<body class="is-preload">
 
-		<button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+		<a class="skip-link" href="#main">Skip to content</a>
+
+		<button id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">🌙</button>
 
 		<!-- Header Banner -->
 		<header id="header">
@@ -71,8 +107,9 @@
 							<li><a href="#about">About</a></li>
 							<li><a href="#news">News</a></li>
 							<li><a href="#publications">Publications</a></li>
+							<li><a href="#education">Education</a></li>
 							<li><a href="teaching-service.html">Teaching &amp; Service</a></li>
-							<li><a href="assets/docs/resume.pdf" target="_blank">CV / Resume</a></li>
+							<li><a href="assets/docs/resume.pdf" target="_blank" rel="noopener">CV / Resume</a></li>
 						</ul>
 					</nav>
 					<ul class="icons" style="margin-top: 0.9em;">
@@ -87,7 +124,7 @@
 		</header>
 
 		<!-- Main -->
-		<div id="main">
+		<main id="main">
 
 			<!-- About -->
 			<section id="about">
@@ -111,14 +148,14 @@
 				<ul class="actions" style="margin-top: 1.5em;">
 					<li><a href="mailto:shashwa3@andrew.cmu.edu" class="button">Email Me</a></li>
 					<li><a href="https://scholar.google.com/citations?user=gsQYr64AAAAJ&hl=en" class="button">Google Scholar</a></li>
-					<li><a href="assets/docs/resume.pdf" class="button" target="_blank">CV / Resume</a></li>
+					<li><a href="assets/docs/resume.pdf" class="button" target="_blank" rel="noopener">CV / Resume</a></li>
 				</ul>
 
 			</section>
 
 			<!-- News -->
-			<section id="news">
-				<h2>News</h2>
+			<section id="news" aria-labelledby="news-heading">
+				<h2 id="news-heading">News</h2>
 				<div class="news-scroll">
 				<ul class="news-list">
 					<li>
@@ -134,12 +171,12 @@
 						<span>Paper accepted to <strong>IEEE RoboSoft 2026</strong>: &ldquo;From fold to function: Dynamic modeling and simulation-driven design of origami mechanisms.&rdquo;</span>
 					</li>
 					<li>
-						<span class="news-date">May 2025</span>
-						<span><span class="award-badge">🏆 Best Poster Award</span> at ICRA 2025 Amphibious Robotics Workshop for <em>PuffyBot</em>.</span>
+						<span class="news-date">Nov 2025</span>
+						<span>PuffyBot preprint posted on arXiv: <a href="https://arxiv.org/abs/2511.09885">arXiv:2511.09885</a>.</span>
 					</li>
 					<li>
-						<span class="news-date">Nov 2024</span>
-						<span>PuffyBot preprint posted on arXiv: <a href="https://arxiv.org/abs/2511.09885">arXiv:2511.09885</a>.</span>
+						<span class="news-date">May 2025</span>
+						<span><span class="award-badge">🏆 Best Poster Award</span> at ICRA 2025 Amphibious Robotics Workshop for <em>PuffyBot</em>.</span>
 					</li>
 					<li>
 						<span class="news-date">2024</span>
@@ -159,12 +196,13 @@
 					</li>
 				</ul>
 				</div>
+				<button id="news-toggle" type="button" aria-expanded="false" hidden>Show all news</button>
 			</section>
 
 			<!-- Publications -->
-			<section id="publications">
-				<h2>Publications</h2>
-				<p style="color:#999; font-size:0.88em; margin-bottom: 0.5em;">
+			<section id="publications" aria-labelledby="pubs-heading">
+				<h2 id="pubs-heading">Publications</h2>
+				<p class="pub-note">
 					Full list on <a href="https://scholar.google.com/citations?user=gsQYr64AAAAJ&hl=en">Google Scholar</a>.
 				</p>
 
@@ -172,10 +210,10 @@
 
 				<div class="pub-entry">
 					<div class="pub-thumb">
-						<video src="images/thumbs/terraskipper_compress.mp4" loop muted playsinline preload="metadata"></video>
+						<video src="images/thumbs/terraskipper_compress.mp4" poster="images/thumbs/posters/terraskipper_compress.jpg" width="520" height="346" loop muted playsinline preload="none" aria-hidden="true"></video>
 					</div>
 					<div class="pub-content">
-						<div class="pub-title">Terraskipper: A centimeter-scale robot for multi-terrain skipping and crawling</div>
+						<h3 class="pub-title">Terraskipper: A centimeter-scale robot for multi-terrain skipping and crawling</h3>
 						<div class="pub-authors"><strong>Singh, S.</strong>, Zhang, S., Matonis, S., Temel, Z.</div>
 						<div class="pub-venue">IEEE International Conference on Robotics and Automation (ICRA 2026)</div>
 						<div class="pub-links">
@@ -186,10 +224,10 @@
 
 				<div class="pub-entry">
 					<div class="pub-thumb">
-						<video src="images/thumbs/physical_coupling.mp4" loop muted playsinline preload="metadata"></video>
+						<video src="images/thumbs/physical_coupling.mp4" poster="images/thumbs/posters/physical_coupling.jpg" width="720" height="406" loop muted playsinline preload="none" aria-hidden="true"></video>
 					</div>
 					<div class="pub-content">
-						<div class="pub-title">Physical coupling for collaboration in heterogeneous robot teams</div>
+						<h3 class="pub-title">Physical coupling for collaboration in heterogeneous robot teams</h3>
 						<div class="pub-authors"><strong>Singh, S.</strong>, Ferlazzo, J., Wang, S., Boateng, S. N., Kramer, M., Martinez, M. O., Temel, F. Z., Blumenschein, L. H.</div>
 						<div class="pub-venue">IEEE Robotics and Automation Letters (RA-L), 2026</div>
 						<div class="pub-links">
@@ -200,10 +238,10 @@
 
 				<div class="pub-entry">
 					<div class="pub-thumb">
-						<video src="images/thumbs/ftf.mp4" loop muted playsinline preload="metadata"></video>
+						<video src="images/thumbs/ftf.mp4" poster="images/thumbs/posters/ftf.jpg" width="720" height="406" loop muted playsinline preload="none" aria-hidden="true"></video>
 					</div>
 					<div class="pub-content">
-						<div class="pub-title">From fold to function: Dynamic modeling and simulation-driven design of origami mechanisms</div>
+						<h3 class="pub-title">From fold to function: Dynamic modeling and simulation-driven design of origami mechanisms</h3>
 						<div class="pub-authors">Han, T., <strong>Singh, S.</strong>, Patil, S., Temel, Z.</div>
 						<div class="pub-venue">IEEE RoboSoft 2026</div>
 						<div class="pub-links">
@@ -216,10 +254,10 @@
 
 				<div class="pub-entry">
 					<div class="pub-thumb">
-						<video src="images/thumbs/puffy.mp4" loop muted playsinline preload="metadata"></video>
+						<video src="images/thumbs/puffy.mp4" poster="images/thumbs/posters/puffy.jpg" width="720" height="406" loop muted playsinline preload="none" aria-hidden="true"></video>
 					</div>
 					<div class="pub-content">
-						<div class="pub-title">PuffyBot: An untethered shape morphing robot for multi-environment locomotion</div>
+						<h3 class="pub-title">PuffyBot: An untethered shape morphing robot for multi-environment locomotion</h3>
 						<div class="pub-authors"><strong>Singh, S.</strong>, Si, Z., Temel, Z.</div>
 						<div class="pub-venue">arXiv preprint arXiv:2511.09885, 2025</div>
 						<div class="pub-links">
@@ -232,10 +270,10 @@
 
 				<div class="pub-entry">
 					<div class="pub-thumb">
-						<video src="images/thumbs/puzzlebot.mp4" loop muted playsinline preload="metadata"></video>
+						<video src="images/thumbs/puzzlebot.mp4" poster="images/thumbs/posters/puzzlebot.jpg" width="720" height="406" loop muted playsinline preload="none" aria-hidden="true"></video>
 					</div>
 					<div class="pub-content">
-						<div class="pub-title">Reconfigurable robot swarms for terrain traversal with passive coupling mechanisms</div>
+						<h3 class="pub-title">Reconfigurable robot swarms for terrain traversal with passive coupling mechanisms</h3>
 						<div class="pub-authors">Yi, S., <strong>Singh, S.</strong>, Seo, A., St Pierre, R., Sycara, K., Temel, Z.</div>
 						<div class="pub-venue">Autonomous Robots, vol. 49, no. 3, pp. 1–18, 2025</div>
 						<div class="pub-links">
@@ -248,10 +286,10 @@
 
 				<div class="pub-entry">
 					<div class="pub-thumb">
-						<video src="images/thumbs/bbytes2.mp4" loop muted playsinline preload="metadata"></video>
+						<video src="images/thumbs/bbytes2.mp4" poster="images/thumbs/posters/bbytes2.jpg" width="720" height="406" loop muted playsinline preload="none" aria-hidden="true"></video>
 					</div>
 					<div class="pub-content">
-						<div class="pub-title">Buffalo Byte: A highly mobile and autonomous millirobot platform</div>
+						<h3 class="pub-title">Buffalo Byte: A highly mobile and autonomous millirobot platform</h3>
 						<div class="pub-authors"><strong>Singh, S.</strong>, Truax, R., Pierre, R. S.</div>
 						<div class="pub-venue">IEEE Robotics and Automation Letters (RA-L), vol. 9, no. 5, pp. 4067–4074, 2024</div>
 						<div class="pub-links">
@@ -263,10 +301,10 @@
 
 				<div class="pub-entry">
 					<div class="pub-thumb">
-						<video src="images/thumbs/springtail.mp4" loop muted playsinline preload="metadata"></video>
+						<video src="images/thumbs/springtail.mp4" poster="images/thumbs/posters/springtail.jpg" width="720" height="502" loop muted playsinline preload="none" aria-hidden="true"></video>
 					</div>
 					<div class="pub-content">
-						<div class="pub-title">Multi-modal jumping and crawling in an autonomous, springtail-inspired microrobot</div>
+						<h3 class="pub-title">Multi-modal jumping and crawling in an autonomous, springtail-inspired microrobot</h3>
 						<div class="pub-authors"><strong>Singh, S.</strong>, Temel, Z., Pierre, R. S.</div>
 						<div class="pub-venue">IEEE International Conference on Robotics and Automation (ICRA 2024), pp. 5999–6005</div>
 						<div class="pub-links">
@@ -283,7 +321,7 @@
 						<img src="images/thumbs/collaboration.jpg" alt="Heterogeneous collaboration" loading="lazy" />
 					</div>
 					<div class="pub-content">
-						<div class="pub-title">Heterogeneous collaboration: A new approach for search and rescue operations</div>
+						<h3 class="pub-title">Heterogeneous collaboration: A new approach for search and rescue operations</h3>
 						<div class="pub-authors">Boateng, S. N., <strong>Singh, S.</strong>, Ugur, M., Wang, S., Kramer, M., Osei, I., Sobek, O., Martinez, M. O., Temel, F. Z., Blumenschein, L. H.</div>
 						<div class="pub-venue">IEEE International Symposium on Safety, Security and Rescue Robotics (SSRR 2024), pp. 142–147</div>
 						<div class="pub-links">
@@ -294,10 +332,10 @@
 
 				<div class="pub-entry">
 					<div class="pub-thumb">
-						<video src="images/thumbs/torque_reversal.mp4" loop muted playsinline preload="metadata"></video>
+						<video src="images/thumbs/torque_reversal.mp4" poster="images/thumbs/posters/torque_reversal.jpg" width="720" height="418" loop muted playsinline preload="none" aria-hidden="true"></video>
 					</div>
 					<div class="pub-content">
-						<div class="pub-title">Design and control of jumping microrobots with torque reversal latches</div>
+						<h3 class="pub-title">Design and control of jumping microrobots with torque reversal latches</h3>
 						<div class="pub-authors">Skowronski, N., Pour, M. M., <strong>Singh, S.</strong>, Longo, S. J., St Pierre, R.</div>
 						<div class="pub-venue">Bioinspiration &amp; Biomimetics, vol. 19, no. 4, p. 046007, 2024</div>
 						<div class="pub-links">
@@ -309,9 +347,8 @@
 
 
 			<!-- Education -->
-			<!-- <section id="education">
-				<h2>Education</h2>
-				<hr class="sec-divider">
+			<section id="education" aria-labelledby="edu-heading">
+				<h2 id="edu-heading">Education</h2>
 
 				<div class="edu-entry">
 					<h4>Carnegie Mellon University &mdash; Pittsburgh, USA</h4>
@@ -339,7 +376,6 @@
 				</div>
 
 				<h3 style="margin-top: 2.5em;">Skills</h3>
-				<hr class="sec-divider">
 				<div class="table-wrapper">
 					<table>
 						<tbody>
@@ -362,35 +398,16 @@
 						</tbody>
 					</table>
 				</div>
-			</section> -->
+			</section>
 
-		</div>
+		</main>
 
-		<!-- Footer
-		<footer id="footer">
-			<div class="inner">
-				<ul class="icons">
-					<li><a href="https://x.com/ShashwatRa" class="icon brands fa-x-twitter"><span class="label">X (Twitter)</span></a></li>
-					<li><a href="https://github.com/shashwatsing" class="icon brands fa-github"><span class="label">Github</span></a></li>
-					<li><a href="mailto:shashwa3@andrew.cmu.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-					<li><a href="https://www.linkedin.com/in/shashwat-1singh" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-					<li><a href="https://scholar.google.com/citations?user=gsQYr64AAAAJ&hl=en" class="icon solid fa-graduation-cap"><span class="label">Google Scholar</span></a></li>
-				</ul>
-				<ul class="copyright">
-					<li>&copy; Shashwat Singh 2025</li>
-				</ul>
-			</div>
-		</footer> -->
+
+		<footer id="site-footer">
+			<p>&copy; 2026 Shashwat Singh &middot; Last updated August 2026</p>
+		</footer>
 
 		<script src="assets/js/site.js"></script>
-
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.poptrox.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
 
 	</body>
 </html>
